@@ -1,0 +1,8 @@
+Changelog
+=========
+
+responsive skin #2 for cyberconcepts.org and loops-dev (unreleased)
+-------------------------------------------------------------------
+
+- Package created using templer
+  []
