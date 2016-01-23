@@ -28,7 +28,9 @@
         i18n:attributes="title"
         tal:condition="nothing" /> <!-- unused: opensearch link -->
 
-  <link rel="stylesheet" href="/@@/cco_r2.css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="/@@/cco_r2.css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" 
+        href="/@@/cco_r2.css/bootstrap-theme.min.css" />
   <link rel="stylesheet" type="text/css" 
         href="/@@/cco_r2.css/font-awesome.min.css" />
 
@@ -67,137 +69,73 @@
 
 <body>
 
-<header>
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container">
-    <div class="row">
-
-      <div class="col-xs-8 col-sm-6 col-md-3 logo">
-        <div class="logo-image">
-          <a title="Wissen erkennen, aufbereiten, anwenden"
-             tal:attributes="title view/headTitle;
-                             href homeUrl">
-            <metal:img define-slot="logo">
-              <img class="logo-img" 
-                   src="/@@/cco_r2.images/logo.jpg"
-                   tal:attributes="alt view/headTitle" /></metal:img>
-          </a>
-        </div>
-      </div>
-		
-      <div class="head-right">
-        
-        <div class="head-search">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle sr-only" 
-                    type="button" id="head-search" data-toggle="dropdown">
-              <i class="fa fa-search"></i>
-            </button>
-            <div class="dropdown-menu" role="menu" aria-labelledby="head-search">
-              <div class="search">
-                <form method="post" 
-                      class="form-inline form-search"
-                      tal:attributes="action string:$homeUrl/search.html">
-                  <input name="searchword" id="mod-search-searchword" 
-                         maxlength="200"  class="form-control search-query" 
-                         type="search" size="0" placeholder="  " />
-                  <input type="hidden" name="task" value="search" />
-                  <input type="hidden" name="option" value="com_search" />
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">			
-          <button type="button" class="navbar-toggle" 
-                  data-toggle="collapse" data-target=".t3-navbar-collapse">
-            <i class="fa fa-bars"></i>
-          </button>
-        </div>
-      
-      </div>
-
-      <nav class="col-sm-6 col-md-9 pull-right navbar navbar-default">
-        <div class="navbar-collapse collapse">
-          <div data-responsive="true">
-            <ul class="nav navbar-nav level0"
-                tal:define="item nocall:view/menu;
-                            level level|python:1">
-
-              <tal:menu repeat="item item/menuItems">
-                <li data-id="211" data-level="1"
-                    tal:define="subitems item/menuItems"
-                    tal:attributes="class python:'dropdown mega ' +
-                        (view.active(item) and 'active' or '')">
-                  <a class="dropdown-toggle"
-                     data-target="#" data-toggle="dropdown"
-                     tal:attributes="href item/url">
-                    <span tal:content="item/context/title" />
-                    <em tal:condition="subitems" class="caret"></em>
-                  </a>
-                  <div class="nav-child dropdown-menu mega-dropdown-menu"
-                       tal:condition="subitems">
-                    <div class="mega-dropdown-inner">
-                      <div class="row">
-                        <div class="col-xs-12 mega-col-nav" data-width="12">
-                          <div class="mega-inner">
-                            <ul class="mega-nav level1">
-                              <tal:menu repeat="item subitems">
-                                <li data-id="219" data-level="2"
-                                    tal:attributes="class python:
-                                        view.selected(item) and 'active' or ''">
-                                  <a class="" data-target="#"
-                                      tal:attributes="href item/url"
-                                      tal:content="item/context/title"></a>
-                                </li>
-                              </tal:menu>
-                            </ul>
-                          </div></div></div></div></div>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" 
+              data-toggle="collapse" data-target="#navbar" 
+              aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="#">Project name</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav"
+          tal:define="item nocall:view/menu">
+        <tal:menu repeat="item item/menuItems">
+          <li class="dropdown active"
+              tal:define="subitems item/menuItems"
+              tal:attributes="class python:'dropdown ' + 
+                    (view.active(item) and 'active' or '')">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" 
+               aria-haspopup="true" aria-expanded="false"
+               tal:attributes="href item/url">
+              <span tal:content="item/context/title" />
+               <span class="caret"
+                     tal:condition="subitems"></span></a>
+            <ul class="dropdown-menu">
+              <tal:menu repeat="item subitems">
+                <li tal:attributes="class python:
+                          view.selected(item) and 'active' or ''">
+                  <a tal:attributes="href item/url"
+                     tal:content="item/context/title"></a>
                 </li>
               </tal:menu>
-
-              <li data-id="228" data-level="1">
-                <a class="" data-target="#"
-                   tal:attributes="href string:$homeUrl/login.html"
-                   i18n:translate="">Login</a>
-              </li>
-
             </ul>
-          </div>
-        </div>
-      </nav>
-
+          </li>
+        </tal:menu>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="../navbar/">Default</a></li>
+      </ul>
     </div>
   </div>
-</header>
-	
+</nav>
+
 <tal:block define="item nocall:view/item"
            condition="nocall:item">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="item-page clearfix">
-            <article>
-              <section class="article-content clearfix">
-                <metal:item use-macro="item/macro" />
-              </section>
-            </article>
-          </div></div></div>
-    </div>
-    <tal:parts repeat="part item/subparts">
-      <tal:part define="item nocall:part/item">
-        <metal:block use-macro="part/macro" />
-      </tal:part>
-    </tal:parts>
+      <div class="container">
+        <div class="well">
+          <article>
+            <section class="article-content clearfix">
+              <metal:item use-macro="item/macro" />
+            </section>
+          </article>
+        </div>
+      </div>
+      <tal:parts repeat="part item/subparts">
+        <tal:part define="item nocall:part/item">
+          <metal:block use-macro="part/macro" />
+        </tal:part>
+      </tal:parts>
 </tal:block>
 
-
 <footer class="wrap">			
-	<section class="t3-copyright">
+	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 copyright ">				
+				<div class="col-md-12">				
           <ol class="breadcrumb"
               tal:define="crumbs view/breadcrumbs"
               tal:condition="crumbs">

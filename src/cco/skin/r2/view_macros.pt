@@ -6,15 +6,18 @@
 </metal:content>
 
 <metal:content define-macro="lobo-part2">
-    <div class="container">
+  <div class="container">
+    <div class="row">
       <div class="col-md-4"
            tal:repeat="related item/children">
-        <div style="text-align: center;">
+        <div class="well" style="text-align: center; min-height: 10em">
             <a tal:attributes="href python:view.getUrlForTarget(related);
                                title related/title"
                tal:content="structure related/renderedDescription" />
-        </div></div>
+        </div>
+      </div>
     </div>
+  </div>
 </metal:content>
 
 
