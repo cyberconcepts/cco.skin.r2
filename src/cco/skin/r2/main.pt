@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html metal:define-macro="html"
       lang="de-de"
-      i18n:domain="cco.skin.r1"
+      i18n:domain="cco.skin.r2"
       tal:define="controller nocall:view/@@controller;
                   resourceBase controller/resourceBase;
                   item nocall:view;
@@ -27,6 +27,8 @@
         href="/@@/cco_r2.css/bootstrap-theme.min.css" />
   <link rel="stylesheet" type="text/css" 
         href="/@@/cco_r2.css/font-awesome.min.css" />
+
+  <metal:css define-slot="custom-css" />
 
   <meta name="viewport" 
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -66,8 +68,7 @@
       <ul class="nav navbar-nav"
           tal:define="item nocall:view/menu">
         <tal:menu repeat="item item/menuItems">
-          <li class="dropdown active"
-              tal:define="subitems item/menuItems"
+          <li tal:define="subitems item/menuItems"
               tal:attributes="class python:'dropdown ' + 
                     (view.active(item) and 'active' or '')">
             <a tal:condition="subitems"
