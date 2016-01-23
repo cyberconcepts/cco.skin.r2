@@ -8,12 +8,14 @@
 <metal:content define-macro="lobo-part2">
   <div class="container">
     <div class="row">
-      <div class="col-md-4"
+      <div class="col-md-4" style="vertical-align: middle"
            tal:repeat="related item/children">
-        <div class="well" style="text-align: center; min-height: 10em">
+        <div class="panel panel-default" style="text-align: center; min-height: 10em;">
+          <div class="panel-body">
             <a tal:attributes="href python:view.getUrlForTarget(related);
                                title related/title"
                tal:content="structure related/renderedDescription" />
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html metal:define-macro="html"
-      prefix="og: http://ogp.me/ns#" lang="de-de" dir="ltr"
-      class='com_content view-article j34 mm-hover'
+      lang="de-de"
       i18n:domain="cco.skin.r1"
       tal:define="controller nocall:view/@@controller;
                   resourceBase controller/resourceBase;
@@ -22,11 +21,6 @@
 
   <link href="/@@/cco_r2.images/favicon.png" 
         rel="shortcut icon" type="image/vnd.microsoft.icon" />
-  <link href="search.xml?format=opensearch"
-        rel="search" title="Search" 
-        type="application/opensearchdescription+xml"
-        i18n:attributes="title"
-        tal:condition="nothing" /> <!-- unused: opensearch link -->
 
   <link rel="stylesheet" type="text/css" href="/@@/cco_r2.css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" 
@@ -34,7 +28,6 @@
   <link rel="stylesheet" type="text/css" 
         href="/@@/cco_r2.css/font-awesome.min.css" />
 
-  <!-- viewport stuff -->
   <meta name="viewport" 
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<style type="text/stylesheet">
@@ -44,26 +37,8 @@
 		@-o-viewport        { width: device-width; }
 		@viewport           { width: device-width; }
 	</style>
-	<script type="text/javascript">
-		//<![CDATA[
-		if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-			var msViewportStyle = document.createElement("style");
-			msViewportStyle.appendChild(
-				document.createTextNode("@-ms-viewport{width:auto!important}")
-			);
-			document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
-		}
-		//]]>
-	</script>
   <meta name="HandheldFriendly" content="true" />
   <meta name="apple-mobile-web-app-capable" content="YES" />
-  <!-- //viewport stuff -->
-
-  <!-- IE8 support -->
-  <!--[if lt IE 9]>
-  <script type="text/javascript" src="/@@/cco_r2.js/t3_respond.min.js"></script>
-  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
 
 </head>
 
@@ -78,9 +53,16 @@
         <span class="sr-only">Toggle navigation</span>
           <i class="fa fa-bars"></i>
       </button>
-      <a class="navbar-brand" href="#">Project name</a>
+      <a style="padding-right: 50px"
+         tal:attributes="title view/headTitle;
+                         href homeUrl">
+        <metal:img define-slot="logo">
+          <img src="/@@/cco_r2.images/logo.jpg"
+               tal:attributes="alt view/headTitle" />
+        </metal:img>
+      </a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
+    <div id="navbar" class="navbar-collapse collapse" style="margin-top: 6px">
       <ul class="nav navbar-nav"
           tal:define="item nocall:view/menu">
         <tal:menu repeat="item item/menuItems">
@@ -88,13 +70,17 @@
               tal:define="subitems item/menuItems"
               tal:attributes="class python:'dropdown ' + 
                     (view.active(item) and 'active' or '')">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" 
-               aria-haspopup="true" aria-expanded="false"
-               tal:attributes="href item/url">
+            <a tal:condition="subitems"
+               tal:attributes="href item/url"
+               class="dropdown-toggle" data-toggle="dropdown" role="button" 
+               aria-haspopup="true" aria-expanded="false">
               <span tal:content="item/context/title" />
-               <span class="caret"
-                     tal:condition="subitems"></span></a>
-            <ul class="dropdown-menu">
+               <span class="caret"></span></a>
+            <a tal:condition="not:subitems"
+               tal:attributes="href item/url">
+              <span tal:content="item/context/title" /></a>
+            <ul class="dropdown-menu"
+                tal:condition="subitems">
               <tal:menu repeat="item subitems">
                 <li tal:attributes="class python:
                           view.selected(item) and 'active' or ''">
@@ -105,9 +91,28 @@
             </ul>
           </li>
         </tal:menu>
+        <li>
+          <a role="button"
+             tal:attributes="href string:$homeUrl/login.html"
+             i18n:translate="">Login</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="../navbar/">Default</a></li>
+        <li class="dropdown navbar-right">
+            <button class="btn navbar-btn dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-search"></i>
+            </button>
+            <div class="dropdown-menu search" role="menu" style="padding:10px"
+                 aria-labelledby="head-search">
+                <form method="get" class="form-inline form-search"
+                      tal:attributes="action string:$homeUrl/search.html">
+                    <input name="search.text" id="search-text"
+                           maxlength="200" class="form-control" 
+                           type="search" size="0" placeholder="label_searchtext"
+                           i18n:translate="placeholder" />
+                </form>
+            </div>
+        </li>
       </ul>
     </div>
   </div>
@@ -116,12 +121,14 @@
 <tal:block define="item nocall:view/item"
            condition="nocall:item">
       <div class="container">
-        <div class="well">
-          <article>
-            <section class="article-content clearfix">
-              <metal:item use-macro="item/macro" />
-            </section>
-          </article>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <article>
+              <section class="article-content clearfix">
+                <metal:item use-macro="item/macro" />
+              </section>
+            </article>
+          </div>
         </div>
       </div>
       <tal:parts repeat="part item/subparts">
