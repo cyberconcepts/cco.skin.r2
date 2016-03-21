@@ -17,6 +17,9 @@
   <browser:resourceDirectory name="cco_r2.images" directory="images" />
   <browser:resourceDirectory name="cco_r2.fonts" directory="fonts" />
 
+  <browser:resource name="favicon.png" file="images/favicon.png"
+        layer="cco.skin.r2.CCO_R2" />
+
   <browser:page name="controller"
         for="zope.publisher.interfaces.browser.IBrowserView"
         class="cco.skin.r2.controller.Controller"

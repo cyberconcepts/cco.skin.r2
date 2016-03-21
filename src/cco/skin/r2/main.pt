@@ -22,7 +22,7 @@
   </title>
 
   <link rel="shortcut icon" type="image/vnd.microsoft.icon"
-        tal:attributes="href string:${resourceBase}cco_r2.images/favicon.png" />
+        tal:attributes="href string:${resourceBase}favicon.png" />
 
   <link rel="stylesheet" type="text/css"
         tal:attributes="href string:${resourceBase}cco_r2.css/bootstrap.min.css" />
@@ -59,7 +59,7 @@
               data-toggle="collapse" data-target="#navbar" 
               aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
-          <i class="fa fa-bars"></i>
+        <i class="fa fa-bars"></i>
       </button>
       <a style="padding-right: 50px"
          tal:attributes="title view/headTitle;
