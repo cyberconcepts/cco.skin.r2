@@ -31,6 +31,9 @@
   <link rel="stylesheet" type="text/css" 
         tal:attributes="href string:${resourceBase}cco_r2.css/font-awesome.min.css" />
 
+  <link rel="stylesheet" type="text/css" 
+        tal:attributes="href string:${resourceBase}cco_r2.css/base.css" />
+
   <metal:css define-slot="custom-css" />
 
   <meta name="viewport" 
@@ -126,15 +129,11 @@
 <tal:block define="item nocall:view/item"
            condition="nocall:item">
       <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-body">
             <article>
               <section class="article-content clearfix">
                 <metal:item use-macro="item/macro" />
               </section>
             </article>
-          </div>
-        </div>
       </div>
       <tal:parts repeat="part item/subparts">
         <tal:part define="item nocall:part/item">

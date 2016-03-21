@@ -38,3 +38,7 @@ class LoboLayout(Layout):
     def subparts(self):
         return [dict(item=self, macro=template.macros['lobo-part2'])]
 
+    def getImageData(self, img):
+        url = self.nodeView.getUrlForTarget(img)
+        src = ('%s/mediaasset.html?v=%s' % (url, 'medium'))
+        return dict(src=src)

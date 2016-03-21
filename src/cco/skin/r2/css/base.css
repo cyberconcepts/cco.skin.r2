@@ -1,0 +1,11 @@
+/* base.css */
+
+
+.panel-header {
+    border: none;
+    box-shadow: none;
+}
+
+.row img {
+    padding-bottom: 25px;
+}

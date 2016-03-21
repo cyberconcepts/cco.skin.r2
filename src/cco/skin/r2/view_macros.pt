@@ -1,8 +1,36 @@
 <html i18n:domain="cco.skin.r2">
 
 
-<metal:content define-macro="lobo-main">
-        <div tal:content="structure item/renderedText" />
+<metal:content define-macro="lobo-main"
+               tal:define="images python:list(item.images)">
+
+  <div class="row"
+       tal:condition="images">
+    <div class="col-md-4" style="vertical-align: middle"
+         tal:define="image python:item.getImageData(images[0])">
+      <img width="100%" height="auto"
+           tal:attributes="src image/src" >
+    </div>
+    <div class="col-md-8" style="vertical-align: middle">
+      <div class="panel panel-header">
+        <div class="panel-body">
+          <div tal:content="structure item/renderedText" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row"
+       tal:condition="not:images">
+    <div class="col-md-12" style="vertical-align: middle">
+      <div class="panel panel-header">
+        <div class="panel-body">
+          <div tal:content="structure item/renderedText" />
+        </div>
+      </div>
+    </div>
+  </div>
+
 </metal:content>
 
 <metal:content define-macro="lobo-part2">
