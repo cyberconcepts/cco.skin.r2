@@ -6,6 +6,10 @@
     box-shadow: none;
 }
 
+.panel-header .panel-body {
+    padding: 0;
+}
+
 .row img {
     margin-bottom: 25px;
     /*border-radius: 4px;*/
