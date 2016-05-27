@@ -4,6 +4,10 @@
 <metal:content define-macro="lobo-main"
                tal:define="images python:list(item.images)">
 
+  <header class="article-header">
+    <h1 tal:content="item/title" />
+  </header>
+
   <div class="row"
        tal:condition="images">
     <div class="col-md-4" style="vertical-align: middle"
@@ -12,7 +16,7 @@
            tal:attributes="src image/src" >
     </div>
     <div class="col-md-8" style="vertical-align: middle">
-      <div class="panel panel-header">
+      <div class="panel-header panel">
         <div class="panel-body">
           <div tal:content="structure item/renderedText" />
         </div>
@@ -23,7 +27,7 @@
   <div class="row"
        tal:condition="not:images">
     <div class="col-md-12" style="vertical-align: middle">
-      <div class="panel panel-header">
+      <div class="panel-header panel">
         <div class="panel-body">
           <div tal:content="structure item/renderedText" />
         </div>
