@@ -1,5 +1,8 @@
 /* base.css */
 
+div.navbar-header {
+    margin-left: 0!important;
+}
 
 .panel-header {
     border: none;
