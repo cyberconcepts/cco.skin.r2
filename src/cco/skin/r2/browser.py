@@ -36,7 +36,7 @@ class LoboLayout(Layout):
 
     @Lazy
     def subparts(self):
-        return [dict(item=self, macro=template.macros['lobo-part2'])]
+        return [dict(item=self, macro=self.template.macros['lobo-part2'])]
 
     def getImageData(self, img):
         url = self.nodeView.getUrlForTarget(img)
