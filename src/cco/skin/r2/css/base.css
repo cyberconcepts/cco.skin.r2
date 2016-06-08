@@ -13,6 +13,11 @@ div.navbar-header {
     padding: 0;
 }
 
+.panel-default {
+    text-align: center;
+    min-height: 10em;
+}
+
 .row img {
     margin-bottom: 25px;
     /*border-radius: 4px;*/

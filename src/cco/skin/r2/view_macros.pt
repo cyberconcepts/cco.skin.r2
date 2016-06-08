@@ -42,7 +42,7 @@
     <div class="row">
       <div class="col-md-4" style="vertical-align: middle"
            tal:repeat="related item/children">
-        <div class="panel panel-default" style="text-align: center; min-height: 10em;">
+        <div class="panel panel-default">
           <div class="panel-body">
             <a tal:attributes="href python:view.getUrlForTarget(related);
                                title related/title"
