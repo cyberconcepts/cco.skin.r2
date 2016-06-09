@@ -90,10 +90,13 @@
             <ul class="dropdown-menu"
                 tal:condition="subitems">
               <tal:menu repeat="item subitems">
-                <li tal:attributes="class python:
+                <li tal:define="glyph python:
+                        (item.virtualTarget.options('title_glyph_icon') or [''])[0]"
+                    tal:attributes="class python:
                           view.selected(item) and 'active' or ''">
-                  <a tal:attributes="href item/url"
-                     tal:content="item/context/title"></a>
+                  <a tal:attributes="href item/url">
+                    <span tal:attributes="class glyph"></span>
+                    <span tal:content="item/context/title" /></a>
                 </li>
               </tal:menu>
             </ul>
