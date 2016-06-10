@@ -91,7 +91,8 @@
                 tal:condition="subitems">
               <tal:menu repeat="item subitems">
                 <li tal:define="glyph python:
-                        (item.virtualTarget.options('title_glyph_icon') or [''])[0]"
+                      (view.getViewForTarget(item.context.target).
+                          options('title_glyph_icon') or [''])[0]"
                     tal:attributes="class python:
                           view.selected(item) and 'active' or ''">
                   <a tal:attributes="href item/url">
