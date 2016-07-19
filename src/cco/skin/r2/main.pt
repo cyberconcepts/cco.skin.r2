@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html metal:define-macro="html"
-      lang="de-de"
+<metal:main define-macro="html"
+            tal:condition="view/update">
+<html lang="de-de"
       i18n:domain="cco.skin.r2"
       tal:define="controller nocall:view/@@controller;
                   resourceBase controller/resourceBase;
@@ -15,7 +16,7 @@
   <meta name="description"
         tal:attributes="content view/headTitle" />
   <meta name="generator" content="BlueBream + loops" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <title metal:define-macro="title"
          tal:content="options/title|view/headTitle">loops
@@ -103,11 +104,6 @@
             </ul>
           </li>
         </tal:menu>
-        <li>
-          <a role="button"
-             tal:attributes="href string:$homeUrl/login.html"
-             i18n:translate="">Login</a>
-        </li>
       </ul>
       <div class="head-right">
         <div class="dropdown navbar-right">
@@ -196,3 +192,4 @@
   
 </body>
 </html>
+</metal:main>
