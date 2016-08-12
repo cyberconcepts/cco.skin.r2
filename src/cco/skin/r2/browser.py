@@ -24,12 +24,12 @@ from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 from zope.cachedescriptors.property import Lazy
 
 from loops.browser.concept import ConceptView as BaseConceptView
-from loops.browser.lobo.standard import Layout
+from loops.browser.lobo.standard import BasePart, Layout
 
 template = ViewPageTemplateFile('view_macros.pt')
 
 
-class LoboLayout(Layout):
+class LoboLayout(BasePart, Layout):
 
     template = template
     macroName = 'lobo-main'
