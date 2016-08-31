@@ -41,4 +41,5 @@ class LoboLayout(BasePart, Layout):
     def getImageData(self, img):
         url = self.nodeView.getUrlForTarget(img)
         src = ('%s/mediaasset.html?v=%s' % (url, 'medium'))
-        return dict(src=src)
+        srcFull = ('%s/mediaasset.html' % (url))
+        return dict(src=src, srcFull=srcFull)
