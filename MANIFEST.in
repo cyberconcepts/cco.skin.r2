@@ -1,0 +1,8 @@
+global-include *.css *.js *.less
+global-include *.gif *.jpg *.png
+global-include *.md *.txt
+global-include *.mo *.po *.pot
+global-include *.pt
+global-include *.zcml
+
+graft src/cco/skin/r2/fonts

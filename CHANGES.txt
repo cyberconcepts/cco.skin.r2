@@ -1,8 +1,7 @@
 Changelog
 =========
 
-responsive skin #2 for cyberconcepts.org and loops-dev (unreleased)
--------------------------------------------------------------------
+1.0.1 - 2017-01-02
+------------------
 
-- Package created using templer
-  []
+- First public release
