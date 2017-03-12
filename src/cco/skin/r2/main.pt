@@ -174,10 +174,8 @@
                 <span tal:replace="view/copyright" />
               </metal:copyright>
               (<a tal:attributes="href string:$homeUrl/impressum">Impressum</a>)
-              <br />Powered by 
-              <b><a href="http://www.python.org">Python</a></b> &middot;
-              <b><a href="http://bluebream.zope.org">bluebream</a></b> &middot;
-              <b><a href="http://www.wissen-statt-suchen.de">loops</a></b>.
+              <br />Powered by
+              <b><a href="https://www.cyberconcepts.org">the cyberconcepts.org web application platform</a></b>.
             </p>
           </div>
         </div>
