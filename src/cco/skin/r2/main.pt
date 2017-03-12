@@ -175,7 +175,7 @@
               </metal:copyright>
               (<a tal:attributes="href string:$homeUrl/impressum">Impressum</a>)
               <br />Powered by
-              <b><a href="https://www.cyberconcepts.org">the cyberconcepts.org web application platform</a></b>.
+              <b><a href="https://www.cyberconcepts.org">the cyberconcepts.org Web Application Platform</a></b>.
             </p>
           </div>
         </div>
