@@ -172,8 +172,12 @@
               &copy; Copyright <span tal:replace="view/currentYear" />, 
               <metal:copyright define-slot="copyright">
                 <span tal:replace="view/copyright" />
-              </metal:copyright>
-              (<a tal:attributes="href string:$homeUrl/impressum">Impressum</a>)
+              </metal:copyright><br />
+              <a tal:attributes="href string:${view/topMenu/url}/impressum">
+                Impressum</a>
+              <tal:dp condition="python:view.hasTopPage('datenschutz')"> - 
+                <a tal:attributes="href string:${view/topMenu/url}/datenschutz">
+                Datenschutzerklärung</a></tal:dp>
               <br />Powered by
               <b><a href="https://www.cyberconcepts.org">the cyberconcepts.org Web Application Platform</a></b>.
             </p>
